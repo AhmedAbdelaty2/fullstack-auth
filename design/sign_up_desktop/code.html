@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-surface":"#0b1c30","tertiary":"#0051b1","on-primary":"#ffffff","primary-fixed":"#dbe1ff","on-secondary-fixed-variant":"#3f465c","on-secondary-fixed":"#131b2e","primary-container":"#2563eb","on-background":"#0b1c30","inverse-primary":"#b4c5ff","on-primary-fixed":"#00174b","on-secondary":"#ffffff","outline":"#737686","primary":"#004ac6","tertiary-container":"#0f69dc","error-container":"#ffdad6","on-tertiary-container":"#edf0ff","outline-variant":"#c3c6d7","on-secondary-container":"#5c647a","surface-container-low":"#eff4ff","inverse-surface":"#213145","surface-dim":"#cbdbf5","tertiary-fixed-dim":"#adc6ff","on-tertiary":"#ffffff","surface-container-high":"#dce9ff","surface":"#f8f9ff","surface-bright":"#f8f9ff","on-surface-variant":"#434655","on-primary-fixed-variant":"#003ea8","surface-variant":"#d3e4fe","error":"#ba1a1a","secondary-fixed":"#dae2fd","surface-container-highest":"#d3e4fe","on-primary-container":"#eeefff","secondary":"#565e74","on-error":"#ffffff","primary-fixed-dim":"#b4c5ff","inverse-on-surface":"#eaf1ff","on-tertiary-fixed":"#001a42","on-tertiary-fixed-variant":"#004395","secondary-container":"#dae2fd","surface-container":"#e5eeff","surface-container-lowest":"#ffffff","tertiary-fixed":"#d8e2ff","surface-tint":"#0053db","secondary-fixed-dim":"#bec6e0","on-error-container":"#93000a","background":"#f8f9ff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin":"1rem","margin-tablet":"2rem","space-lg":"1.5rem","gutter":"1rem","space-xl":"2rem","margin-desktop":"3rem","space-xs":"0.25rem","space-sm":"0.5rem","gutter-desktop":"1.5rem","space-md":"1rem"},"fontFamily":{"body-sm":["Geist"],"headline-xl-mobile":["Space Grotesk"],"body-lg":["Geist"],"code-sm":["Geist"],"body-md":["Geist"],"headline-lg":["Space Grotesk"],"headline-xl":["Space Grotesk"],"label-sm":["Geist"],"label-md":["Geist"],"headline-md":["Space Grotesk"],"headline-sm":["Space Grotesk"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"headline-xl-mobile":["26px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.03em","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"500"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"500"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen"><main class="min-h-screen w-full flex items-center justify-center p-margin"><div class="w-full max-w-[420px] flex flex-col items-center"><div class="mb-space-lg flex items-center gap-space-sm"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-on-primary text-[24px]">token</span></div><span class="font-headline-md text-headline-md text-on-surface tracking-tight font-semibold">Apex</span></div><div class="w-full bg-surface-container-lowest rounded-xl p-space-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.05),0_1px_2px_-1px_rgba(15,23,42,0.05)]"><div class="flex flex-col w-full">
+<div class="flex flex-col space-y-1 mb-space-lg text-left">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-semibold">Create your account</h1>
+<p class="font-body-md text-body-md text-secondary">Enter your details below to create your account.</p>
+</div>
+<form class="flex flex-col space-y-space-md" id="signup-form" onsubmit="event.preventDefault()">
+<!-- Full Name Input -->
+<div class="flex flex-col space-y-space-xs text-left">
+<label class="font-label-md text-label-md text-on-surface" for="full-name">Full name</label>
+<div class="relative w-full">
+<input class="w-full h-10 px-space-md bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg shadow-sm placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest" id="full-name" placeholder="Alex Morgan" required="" type="text" value="Alex Morgan"/>
+</div>
+</div>
+<!-- Email Input -->
+<div class="flex flex-col space-y-space-xs text-left">
+<label class="font-label-md text-label-md text-on-surface" for="email">Email</label>
+<div class="relative w-full">
+<input class="w-full h-10 px-space-md bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg shadow-sm placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest" id="email" placeholder="name@company.com" required="" type="email" value="alex.morgan@company.com"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col space-y-space-xs text-left">
+<label class="font-label-md text-label-md text-on-surface" for="password">Password</label>
+<div class="relative flex items-center w-full">
+<input class="w-full h-10 pl-space-md pr-10 bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg shadow-sm placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest" id="password" placeholder="Create a strong password" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute right-0 top-0 h-10 w-10 flex items-center justify-center text-secondary hover:text-on-surface transition-colors focus:outline-none" id="toggle-password" type="button">
+<span class="material-symbols-outlined text-[20px]" id="eye-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Password Requirements Checklist -->
+<div class="p-space-md bg-surface-container-low rounded-xl shadow-sm space-y-space-xs text-left">
+<p class="font-label-sm text-label-sm text-secondary font-medium mb-space-xs">Password criteria</p>
+<div class="flex items-center space-x-space-sm transition-colors text-secondary" id="rule-length">
+<span class="material-symbols-outlined text-[16px] rule-icon">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm rule-text">At least 8 characters</span>
+</div>
+<div class="flex items-center space-x-space-sm transition-colors text-secondary" id="rule-letter">
+<span class="material-symbols-outlined text-[16px] rule-icon">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm rule-text">At least one letter</span>
+</div>
+<div class="flex items-center space-x-space-sm transition-colors text-secondary" id="rule-number">
+<span class="material-symbols-outlined text-[16px] rule-icon">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm rule-text">At least one number</span>
+</div>
+<div class="flex items-center space-x-space-sm transition-colors text-secondary" id="rule-special">
+<span class="material-symbols-outlined text-[16px] rule-icon">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm rule-text">At least one special character</span>
+</div>
+</div>
+<!-- Submit CTA -->
+<div class="pt-space-xs">
+<button class="w-full h-10 px-space-md bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:opacity-95 active:opacity-90 transition-opacity flex items-center justify-center font-medium" type="submit">
+        Create account
+      </button>
+</div>
+</form>
+<!-- Alternative Sign In Link -->
+<div class="mt-space-lg text-center">
+<p class="font-body-md text-body-md text-secondary">
+      Already have an account? 
+      <a class="font-label-md text-label-md text-primary font-medium hover:underline inline-flex items-center ml-1" href="#signin">Sign in</a>
+</p>
+</div>
+</div>
+<script>
+  (function() {
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.getElementById('toggle-password');
+    const eyeIcon = document.getElementById('eye-icon');
+
+    const rules = {
+      length: {
+        el: document.getElementById('rule-length'),
+        validate: (val) => val.length >= 8
+      },
+      letter: {
+        el: document.getElementById('rule-letter'),
+        validate: (val) => /[a-zA-Z]/.test(val)
+      },
+      number: {
+        el: document.getElementById('rule-number'),
+        validate: (val) => /[0-9]/.test(val)
+      },
+      special: {
+        el: document.getElementById('rule-special'),
+        validate: (val) => /[^a-zA-Z0-9]/.test(val)
+      }
+    };
+
+    // Toggle password visibility
+    if (toggleBtn && passwordInput && eyeIcon) {
+      toggleBtn.addEventListener('click', function() {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        eyeIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+      });
+    }
+
+    // Real-time password criteria validation
+    if (passwordInput) {
+      passwordInput.addEventListener('input', function() {
+        const val = passwordInput.value;
+
+        Object.keys(rules).forEach((key) => {
+          const rule = rules[key];
+          const passed = rule.validate(val);
+          const icon = rule.el.querySelector('.rule-icon');
+          const text = rule.el.querySelector('.rule-text');
+
+          if (passed) {
+            rule.el.classList.remove('text-secondary');
+            rule.el.classList.add('text-primary');
+            icon.textContent = 'check_circle';
+            icon.style.fontVariationSettings = "'FILL' 1";
+            text.classList.add('font-medium');
+          } else {
+            rule.el.classList.add('text-secondary');
+            rule.el.classList.remove('text-primary');
+            icon.textContent = 'radio_button_unchecked';
+            icon.style.fontVariationSettings = "'FILL' 0";
+            text.classList.remove('font-medium');
+          }
+        });
+      });
+    }
+  })();
+</script></div></div></main></body></html>

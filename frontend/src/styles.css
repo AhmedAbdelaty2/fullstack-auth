@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+  --color-canvas: #f5f7ff;
+  --color-line: #e2e8f0;
+  --color-tint: #ecf2ff;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+}
+
+@layer base {
+  html { color-scheme: light; }
+  body { @apply min-w-0 bg-canvas font-sans text-ink antialiased; }
+  button:not(:disabled) { @apply cursor-pointer; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-accent; }
+  h1 { @apply text-[1.65rem] leading-tight font-semibold tracking-[-0.035em] sm:text-[1.85rem]; }
+}
+
+@layer components {
+  .brand { @apply flex w-fit items-center gap-2.5 text-xl font-semibold tracking-tight; }
+  .brand img { @apply size-10 shrink-0; }
+
+  .auth-layout { @apply flex min-h-svh items-center justify-center px-4 py-6 sm:py-10; }
+  .auth-stack { @apply flex w-full max-w-[420px] flex-col overflow-hidden rounded-xl border border-line bg-white shadow-sm sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none; }
+  .auth-stack > .brand { @apply mx-5 mt-5 sm:mx-auto sm:mt-0 sm:mb-5; }
+  .auth-card { @apply p-5 sm:rounded-xl sm:border sm:border-line sm:bg-white sm:p-8 sm:shadow-sm; }
+  .auth-intro { @apply mb-5; }
+  .signin-intro { @apply sm:text-center; }
+  .auth-intro p, .welcome > p { @apply mt-1.5 text-sm leading-relaxed text-muted; }
+  .auth-form { @apply grid gap-4; }
+  .field { @apply grid min-w-0 gap-1.5 text-sm; }
+  .field label { @apply font-medium; }
+  .input { @apply block min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-base transition-colors placeholder:text-slate-500 sm:text-sm; }
+  .input:hover { @apply border-slate-400; }
+  .input:focus-visible { @apply border-accent; }
+  .input[aria-invalid=true] { @apply border-red-600; }
+  .input-with-toggle { @apply pr-12; }
+  .password-toggle { @apply absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-lg text-muted hover:text-accent; }
+  .password-toggle:focus-visible { @apply -outline-offset-3; }
+  .field-error { @apply text-sm text-red-700; }
+  .password-checklist { @apply rounded-lg border border-blue-100 bg-tint px-3.5 py-3 text-sm text-muted; }
+  .password-checklist > p { @apply mb-2 font-medium text-ink; }
+  .password-checklist ul { @apply grid gap-1; }
+  .password-checklist li { @apply flex items-start gap-2; }
+  .password-checklist svg { @apply mt-0.5 size-4 shrink-0; }
+  .password-checklist .criterion-met { @apply font-medium text-green-800; }
+  .auth-switch { @apply mt-5 border-t border-line pt-4 text-center text-sm text-muted; }
+  .auth-switch a { @apply rounded-sm font-semibold text-accent hover:underline; }
+
+  .button { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border px-4 text-sm font-semibold transition-colors disabled:cursor-wait disabled:opacity-65; }
+  .button-primary { @apply border-transparent bg-accent text-white enabled:hover:bg-accent-hover; }
+  .button-secondary { @apply border-line bg-white text-muted enabled:hover:border-blue-200 enabled:hover:bg-tint enabled:hover:text-accent; }
+  .auth-submit { @apply mt-1 w-full; }
+  .notice { @apply rounded-lg border px-3 py-2.5 text-sm; }
+  .notice-success { @apply mb-4 block border-green-200 bg-green-50 text-green-800; }
+  .notice-error { @apply border-red-200 bg-red-50 text-red-800; }
+  .session-retry { @apply grid gap-4; }
+
+  .app-header { @apply border-b border-line bg-white; }
+  .app-header-inner { @apply mx-auto flex min-h-16 max-w-[1440px] flex-wrap items-center justify-between gap-2 px-4 py-2 sm:px-8 lg:px-12; }
+  .app-header .brand img { @apply size-9; }
+  .account-main { @apply mx-auto grid w-full max-w-[1024px] gap-6 px-4 pt-8 pb-12 sm:px-8 sm:pt-14; }
+  .session-label { @apply mb-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-blue-100 bg-tint px-2.5 py-1 text-xs font-semibold text-accent-hover; }
+  .session-label span { @apply size-1.5 rounded-full bg-accent; }
+  .account-card { @apply min-w-0 overflow-hidden rounded-xl border border-line bg-white shadow-sm; }
+  .account-card-heading { @apply flex items-center gap-2.5 border-b border-blue-100 bg-tint px-4 py-3 text-sm font-semibold sm:px-6; }
+  .account-card-heading svg { @apply shrink-0 text-accent; }
+  .account-card-body { @apply grid gap-4 p-4 sm:flex sm:items-center sm:gap-6 sm:p-6; }
+  .avatar { @apply flex size-12 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-base font-semibold text-accent-hover; }
+  .account-details { @apply grid min-w-0 flex-1 gap-2 sm:grid-cols-2 sm:gap-4; }
+  .account-details > div { @apply min-w-0 rounded-lg bg-slate-50 p-3; }
+  .account-details dt { @apply flex items-center gap-1.5 text-sm text-muted; }
+  .account-details dt svg { @apply shrink-0; }
+  .account-details dd { @apply mt-1 text-sm font-semibold wrap-anywhere; }
+}

@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: ${{ matrix.package == 'backend' && 'mongo:9.0' || '' }}
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'quit(db.adminCommand({ ping: 1 }).ok ? 0 : 1)'"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      TEST_MONGO_URI: mongodb://127.0.0.1:27017
+      SCARF_ANALYTICS: "false"
+    strategy:
+      matrix:
+        package: [frontend, backend]
+    defaults:
+      run:
+        working-directory: ${{ matrix.package }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: ${{ matrix.package }}/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      E2E_BASE_URL: http://localhost:5173
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npm exec -- playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Test authentication in Chromium
+        run: |
+          JWT_SECRET="$(node -p "require('node:crypto').randomBytes(32).toString('hex')")"
+          export JWT_SECRET
+          trap 'docker compose down --volumes' EXIT
+          docker compose up --build --wait --wait-timeout 120
+          npm --prefix frontend run test:e2e
