@@ -30,8 +30,13 @@ export class AuthController {
   @ApiBadRequestResponse({ type: ErrorDto })
   @ApiForbiddenResponse({ type: ErrorDto })
   @ApiConflictResponse({ type: ErrorDto })
-  async signUp(@Body() body: SignUpDto, @Res({ passthrough: true }) response: Response) {
-    return this.setSession(response, await this.auth.signUp(body));
+  async signUp(
+    @Body() body: SignUpDto,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const { token, result } = await this.auth.signUp(body);
+    this.setSessionCookie(response, token, result.expiresAt);
+    return result;
   }
 
   @Post('signin')
@@ -42,8 +47,13 @@ export class AuthController {
   @ApiBadRequestResponse({ type: ErrorDto })
   @ApiForbiddenResponse({ type: ErrorDto })
   @ApiUnauthorizedResponse({ type: ErrorDto })
-  async signIn(@Body() body: SignInDto, @Res({ passthrough: true }) response: Response) {
-    return this.setSession(response, await this.auth.signIn(body));
+  async signIn(
+    @Body() body: SignInDto,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const { token, result } = await this.auth.signIn(body);
+    this.setSessionCookie(response, token, result.expiresAt);
+    return result;
   }
 
   @Post('logout')
@@ -53,8 +63,12 @@ export class AuthController {
   @ApiCookieAuth()
   @ApiNoContentResponse({ description: 'Session revoked and cookie cleared' })
   @ApiForbiddenResponse({ type: ErrorDto })
-  async logout(@Req() request: Request, @Res({ passthrough: true }) response: Response) {
-    await this.auth.logout(request.cookies[this.config.cookieName]);
+  async logout(
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const token = request.cookies[this.config.cookieName];
+    await this.auth.logout(token);
     response.clearCookie(this.config.cookieName, this.config.cookie);
   }
 
@@ -67,11 +81,10 @@ export class AuthController {
     return request.account;
   }
 
-  private setSession(response: Response, { token, result }: { token: string; result: AuthResultDto }) {
+  private setSessionCookie(response: Response, token: string, expiresAt: number): void {
     response.cookie(this.config.cookieName, token, {
       ...this.config.cookie,
-      expires: new Date(result.expiresAt),
+      expires: new Date(expiresAt),
     });
-    return result;
   }
 }

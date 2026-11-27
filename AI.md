@@ -50,6 +50,11 @@ The development host had Docker and browsers available. Node was absent from PAT
 - Codex built and started the Docker Compose stack and ran both production builds from a temporary copy that excluded `design/`. The README identifies the retained exports as design references.
 - Codex initialized local Git on `main` and inspected the staged files for credentials, private environment files, and generated outputs. GitHub-hosted CI and deployment behind a production HTTPS proxy remain unverified.
 
+## Auth controller follow-up
+
+- I asked Codex to make the signup, signin, and logout handlers easier to read. Signup and signin now set the session cookie through `setSessionCookie` and return the response body explicitly. Logout reads the session token into a local variable before revoking the session and clearing the cookie.
+- Backend lint, type checking, and all 14 integration tests passed in Docker against a disposable MongoDB instance.
+
 ## What worked well with AI
 
 - The consolidated prompt gave Codex one place to check how the stack, security requirements, and tests fit together. It tied the Docker setup and isolated test data to a browser test of the real authentication flow.
